@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>winning?</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="twitter:card" content="none">
+    <meta property="og:image" content="none">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1"></script>
+    <script>
+        let noClickCount = 0;
+        const noMessages = [
+            "oops wrong button pookie! you meant the 'yes' right?",
+            "nooo wrong button again silly",
+            "reconsider?",
+            "are you sure?",
+            "is that your final answer pookie?",
+            "D: its okkk..."
+        ];
+
+        function handleYesClick() {
+            alert("YAYY WINNIE :) WE'RE BOTH WINNING NOW!");
+            document.getElementById("valentineMusic").play();
+            tsParticles.load("tsparticles", {
+                "fullScreen": {
+                    "zIndex": 1
+                },
+                "emitters": {
+                    "position": {
+                        "x": 50,
+                        "y": 50
+                    },
+                    "rate": {
+                        "quantity": 5,
+                        "delay": 0.15
+                    }
+                },
+                "particles": {
+                    "color": {
+                        "value": [
+                            "#1E00FF",
+                            "#FF0061",
+                            "#E1FF00",
+                            "#00FF9E"
+                        ]
+                    },
+                    "move": {
+                        "decay": 0.05,
+                        "direction": "top",
+                        "enable": true,
+                        "gravity": {
+                            "enable": true
+                        },
+                        "outModes": {
+                            "top": "none",
+                            "default": "destroy"
+                        },
+                        "speed": {
+                            "min": 50,
+                            "max": 100
+                        }
+                    },
+                    "number": {
+                        "value": 0
+                    },
+                    "opacity": {
+                        "value": 1
+                    },
+                    "rotate": {
+                        "value": {
+                            "min": 0,
+                            "max": 360
+                        },
+                        "direction": "random",
+                        "animation": {
+                            "enable": true,
+                            "speed": 30
+                        }
+                    },
+                    "tilt": {
+                        "direction": "random",
+                        "enable": true,
+                        "value": {
+                            "min": 0,
+                            "max": 360
+                        },
+                        "animation": {
+                            "enable": true,
+                            "speed": 30
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "animation": {
+                            "enable": true,
+                            "startValue": "min",
+                            "count": 1,
+                            "speed": 16,
+                            "sync": true
+                        }
+                    },
+                    "roll": {
+                        "darken": {
+                            "enable": true,
+                            "value": 25
+                        },
+                        "enlighten": {
+                            "enable": true,
+                            "value": 25
+                        },
+                        "enable": true,
+                        "speed": {
+                            "min": 5,
+                            "max": 15
+                        }
+                    },
+                    "wobble": {
+                        "distance": 30,
+                        "enable": true,
+                        "speed": {
+                            "min": -7,
+                            "max": 7
+                        }
+                    },
+                    "shape": {
+                        "type": [
+                            "circle",
+                            "square"
+                        ],
+                        "options": {}
+                    }
+                },
+                "responsive": [
+                    {
+                        "maxWidth": 1024,
+                        "options": {
+                            "particles": {
+                                "move": {
+                                    "speed": {
+                                        "min": 33,
+                                        "max": 66
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            });
+        }
+
+        function handleNoClick() {
+            if (noClickCount < 6) {
+                alert(noMessages[noClickCount]);
+                noClickCount++;
+                if (noClickCount <= 5) {
+                    document.getElementById("yesButton").style.width = `${100 + (noClickCount * 10)}px`;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="tsparticles" class="tsparticles-container"></div>
+    <div class="container">
+        <h1>Happy Valentine's Day Winnie!</h1>
+        <h2>Wanna be my valentine? Not gonna lie... you'd really be winning with me</h2>
+        <p>(i'm so sorry)</p>
+        <img src="https://media.tenor.com/cFQECeqE5dYAAAAi/valentines-day-winnie.gif" alt="Valentines Day Winnie"
+            class="winnie-image">
+        <div>
+            <button id="yesButton" onclick="handleYesClick()">Yes</button>
+            <button id="noButton" onclick="handleNoClick()">No</button>
+        </div>
+    </div>
+    <audio id="valentineMusic" src="music.mp3"></audio>
+</body>
+
+</html>
